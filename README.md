@@ -1,8 +1,8 @@
-# Ballerina Ballerina HubSpot CRM Products Connector connector
+# Ballerina HubSpot CRM Products connector
 
-[![Build](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/actions/workflows/ci.yml)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-hubspot.crm.object.products.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.object.products.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%hubspot.crm.object.products)
+[![Build](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/actions/workflows/ci.yml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-hubspot.crm.obj.products.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/commits/master)
+[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.obj.products.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fhubspot.crm.obj.products)
 
 ## Overview
 
@@ -28,17 +28,17 @@ Within app developer accounts, you can create [Developer Test Account](https://d
 
 1. Go to 'Test Account' section from the left sidebar.
 
-   ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/test_acc_1.png)
+   ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/test_acc_1.png)
 
 2. Click 'Create developer test account'. In the dialog box, give a name to your test account and click 'Create'.
 
-   ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/test_acc_2.png)
+   ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/test_acc_2.png)
 
 ### Step 3: Create a HubSpot App under your account.
 
 1. In your developer account, navigate to the 'Apps' section. Click on 'Create App'.
 
-   ![Hubspot app creation 1](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/create_app_1.png)
+   ![Hubspot app creation 1](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/create_app_1.png)
 
 2. Provide the necessary details, including the app name and description.
 
@@ -46,23 +46,23 @@ Within app developer accounts, you can create [Developer Test Account](https://d
 
 1. Move to the Auth Tab.
 
-   ![Hubspot app auth setup 1](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/create_app_2.png)
+   ![Hubspot app auth setup 1](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/create_app_2.png)
 
 2. In the Scopes section, add the following scope for your app using the 'Add new scope' button.
 
    - `e-commerce`
 
-   ![Hubspot app auth setup 2](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/scope_set.png)
+   ![Hubspot app auth setup 2](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/scope_set.png)
 
 3. Add your Redirect URI in the relevant section. You can also use `localhost` addresses for local development purposes. Click 'Create App'.
 
-   ![Hubspot app auth setup 3](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/create_app_final.png)
+   ![Hubspot app auth setup 3](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/create_app_final.png)
 
 ### Step 5: Get your Client ID and Client Secret
 
 - Navigate to the 'Auth' section of your app. Make sure to save the provided Client ID and Client Secret.
 
-   ![Hubspot app auth setup 5](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/get_credentials.png)
+   ![Hubspot app auth setup 5](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/get_credentials.png)
 
 ### Step 6: Setup Authentication Flow
 
@@ -80,7 +80,7 @@ Before proceeding with the Quickstart, ensure you have obtained the Access Token
 
 2. Paste it in the browser and select your developer test account to install the app when prompted.
 
-   ![Hubspot app install](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/main/docs/setup/resources/install_app.png)
+   ![Hubspot app install](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/main/docs/setup/resources/install_app.png)
 
 3. A code will be displayed in the browser. Copy the code.
 
@@ -179,11 +179,11 @@ public function main() returns error? {
 
 ## Examples
 
-The `Ballerina HubSpot CRM Products Connector` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/tree/main/examples/), covering the following use cases:
+The `Ballerina HubSpot CRM Products Connector` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/tree/main/examples/), covering the following use cases:
 
-1. [Update Batch of Products](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/tree/main/examples/update-products) - Integrate Ballerina HubSpot CRM Products Connector to update the properties of a batch of products.
+1. [Update Batch of Products](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/tree/main/examples/update-products) - Integrate Ballerina HubSpot CRM Products Connector to update the properties of a batch of products.
 
-2. [Filter and Archive Batch](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.object.products/tree/main/examples/search-and-archive) - Integrate Ballerina HubSpot CRM Products Connector to filter products based on the price and then archive the batch.
+2. [Filter and Archive Batch](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.obj.products/tree/main/examples/search-and-archive) - Integrate Ballerina HubSpot CRM Products Connector to filter products based on the price and then archive the batch.
 
 ## Build from the source
 
