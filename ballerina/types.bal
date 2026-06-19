@@ -19,31 +19,31 @@
 
 import ballerina/http;
 
-# Standard error response structure returned by the API.
+# Standard error response structure returned by the API
 public type StandardError record {
-    # Optional sub-category providing additional error classification.
+    # Optional sub-category providing additional error classification
     record {} subCategory?;
-    # Contextual metadata map with string array values for the error.
+    # Contextual metadata map with string array values for the error
     record {|string[]...;|} context;
-    # Map of relevant links associated with the error response.
+    # Map of relevant links associated with the error response
     record {|string...;|} links;
-    # Unique identifier for the error instance.
+    # Unique identifier for the error instance
     string id?;
-    # High-level category classifying the type of error.
+    # High-level category classifying the type of error
     string category;
-    # Human-readable message describing the error.
+    # Human-readable message describing the error
     string message;
-    # List of detailed error entries associated with this error.
+    # List of detailed error entries associated with this error
     ErrorDetail[] errors;
-    # HTTP status code or status label for the error response.
+    # HTTP status code or status label for the error response
     string status;
 };
 
-# Paginated collection of associated object IDs.
+# Paginated collection of associated object IDs
 public type CollectionResponseAssociatedId record {
-    # Pagination metadata containing cursors for navigating to next and previous pages.
+    # Pagination metadata containing cursors for navigating to next and previous pages
     Paging paging?;
-    # Array of associated IDs returned in the response.
+    # Array of associated IDs returned in the response
     AssociatedId[] results;
 };
 
@@ -53,33 +53,33 @@ public type PatchProductIdUpdateQueries record {
     string idProperty?;
 };
 
-# Defines the target object and association types for a relationship.
+# Defines the target object and association types for a relationship
 public type PublicAssociationsForObject record {
-    # List of association type specifications for the relationship.
+    # List of association type specifications for the relationship
     AssociationSpec[] types;
-    # Represents a public object identifier containing a unique ID string.
+    # Represents a public object identifier containing a unique ID string
     PublicObjectId to;
 };
 
-# Batch operation response containing product objects and status.
+# Batch operation response containing product objects and status
 public type BatchResponseSimplePublicObject record {
-    # Timestamp when the batch operation completed.
+    # Timestamp when the batch operation completed
     string completedAt;
-    # Timestamp when the batch operation was requested.
+    # Timestamp when the batch operation was requested
     string requestedAt?;
-    # Timestamp when the batch operation started processing.
+    # Timestamp when the batch operation started processing
     string startedAt;
-    # Map of relevant links related to the batch response.
+    # Map of relevant links related to the batch response
     record {|string...;|} links?;
-    # List of product objects returned in the batch response.
+    # List of product objects returned in the batch response
     SimplePublicObject[] results;
-    # Current processing status of the batch operation.
+    # Current processing status of the batch operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# A logical grouping of filters applied together when searching products.
+# A logical grouping of filters applied together when searching products
 public type FilterGroup record {
-    # List of filter conditions within this filter group.
+    # List of filter conditions within this filter group
     Filter[] filters;
 };
 
@@ -99,7 +99,7 @@ public type GetGetPageQueries record {
     string[] properties?;
 };
 
-# Detailed information about a specific error encountered during a request.
+# Detailed information about a specific error encountered during a request
 public type ErrorDetail record {
     # A specific category that contains more specific detail about the error
     string subCategory?;
@@ -113,85 +113,85 @@ public type ErrorDetail record {
     string message;
 };
 
-# Pagination object providing a cursor for retrieving the next page of results.
+# Pagination object providing a cursor for retrieving the next page of results
 public type ForwardPaging record {
-    # Pagination cursor details for retrieving the next page of results.
+    # Pagination cursor details for retrieving the next page of results
     NextPage next?;
 };
 
-# A minimal object representation containing only a unique identifier.
+# A minimal object representation containing only a unique identifier
 public type SimplePublicObjectId record {
-    # The unique identifier of the product object.
+    # The unique identifier of the product object
     string id;
 };
 
-# Batch upsert response containing results, status, timing metadata, and any errors encountered.
+# Batch upsert response containing results, status, timing metadata, and any errors encountered
 public type BatchResponseSimplePublicUpsertObjectWithErrors record {
-    # Timestamp when the batch operation completed.
+    # Timestamp when the batch operation completed
     string completedAt;
-    # Total number of errors encountered during the batch operation.
+    # Total number of errors encountered during the batch operation
     int:Signed32 numErrors?;
-    # Timestamp when the batch operation was requested.
+    # Timestamp when the batch operation was requested
     string requestedAt?;
-    # Timestamp when the batch operation began processing.
+    # Timestamp when the batch operation began processing
     string startedAt;
-    # Map of relevant hyperlinks associated with the batch response.
+    # Map of relevant hyperlinks associated with the batch response
     record {|string...;|} links?;
-    # List of upserted product objects returned in the batch response.
+    # List of upserted product objects returned in the batch response
     SimplePublicUpsertObject[] results;
-    # List of errors encountered for individual records in the batch.
+    # List of errors encountered for individual records in the batch
     StandardError[] errors?;
-    # Current processing status of the batch upsert operation.
+    # Current processing status of the batch upsert operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# Input payload for batch reading products by ID, specifying properties to retrieve.
+# Input payload for batch reading products by ID, specifying properties to retrieve
 public type BatchReadInputSimplePublicObjectId record {
-    # List of properties for which to return historical values.
+    # List of properties for which to return historical values
     string[] propertiesWithHistory;
     # The name of a property whose values are unique for this object
     string idProperty?;
-    # List of object IDs to retrieve in the batch request.
+    # List of object IDs to retrieve in the batch request
     SimplePublicObjectId[] inputs;
-    # List of property names to include in the response.
+    # List of property names to include in the response
     string[] properties;
 };
 
-# Response object containing the status, timing, and results of a batch upsert operation on products.
+# Response object containing the status, timing, and results of a batch upsert operation on products
 public type BatchResponseSimplePublicUpsertObject record {
-    # Timestamp when the batch operation completed.
+    # Timestamp when the batch operation completed
     string completedAt;
-    # Timestamp when the batch operation was requested.
+    # Timestamp when the batch operation was requested
     string requestedAt?;
-    # Timestamp when the batch operation began processing.
+    # Timestamp when the batch operation began processing
     string startedAt;
-    # Map of related resource links associated with the batch response.
+    # Map of related resource links associated with the batch response
     record {|string...;|} links?;
-    # Collection of upserted product objects returned by the batch operation.
+    # Collection of upserted product objects returned by the batch operation
     SimplePublicUpsertObject[] results;
-    # Current processing status of the batch operation.
+    # Current processing status of the batch operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# A property value paired with its source information and the timestamp of the last update.
+# A property value paired with its source information and the timestamp of the last update
 public type ValueWithTimestamp record {
-    # Identifier of the source that set this property value.
+    # Identifier of the source that set this property value
     string sourceId?;
-    # Type of source that last updated this property value.
+    # Type of source that last updated this property value
     string sourceType;
-    # Human-readable label describing the source of the value.
+    # Human-readable label describing the source of the value
     string sourceLabel?;
-    # ID of the user who last updated this property value.
+    # ID of the user who last updated this property value
     int:Signed32 updatedByUserId?;
-    # The property value associated with the given timestamp.
+    # The property value associated with the given timestamp
     string value;
-    # Timestamp when this property value was last updated.
+    # Timestamp when this property value was last updated
     string timestamp;
 };
 
-# Input schema for a batch operation containing a list of product object IDs.
+# Input schema for a batch operation containing a list of product object IDs
 public type BatchInputSimplePublicObjectId record {
-    # List of product object IDs to process in the batch operation.
+    # List of product object IDs to process in the batch operation
     SimplePublicObjectId[] inputs;
 };
 
@@ -202,44 +202,44 @@ public type OAuth2RefreshTokenGrantConfig record {|
     string refreshUrl = "https://api.hubapi.com/oauth/v1/token";
 |};
 
-# Input schema for a batch upsert operation containing a list of product objects to create or update.
+# Input schema for a batch upsert operation containing a list of product objects to create or update
 public type BatchInputSimplePublicObjectBatchInputUpsert record {
-    # List of product objects to create or update in the batch upsert.
+    # List of product objects to create or update in the batch upsert
     SimplePublicObjectBatchInputUpsert[] inputs;
 };
 
-# Paginated collection of product objects with a total count and forward paging cursor.
+# Paginated collection of product objects with a total count and forward paging cursor
 public type CollectionResponseWithTotalSimplePublicObjectForwardPaging record {
-    # Total number of results matching the request.
+    # Total number of results matching the request
     int:Signed32 total;
-    # Pagination object providing a cursor for retrieving the next page of results.
+    # Pagination object providing a cursor for retrieving the next page of results
     ForwardPaging paging?;
-    # Array of product objects returned in the current page.
+    # Array of product objects returned in the current page
     SimplePublicObject[] results;
 };
 
-# Represents a product record with its properties, timestamps, and archival status.
+# Represents a product record with its properties, timestamps, and archival status
 public type SimplePublicObject record {
-    # Timestamp when the product record was created.
+    # Timestamp when the product record was created
     string createdAt;
-    # Indicates whether the product record is archived.
+    # Indicates whether the product record is archived
     boolean archived?;
-    # Timestamp when the product record was archived.
+    # Timestamp when the product record was archived
     string archivedAt?;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # Unique identifier of the product record.
+    # Unique identifier of the product record
     string id;
-    # Map of property names to their current values for the product.
+    # Map of property names to their current values for the product
     record {|string?...;|} properties;
-    # Timestamp when the product record was last updated.
+    # Timestamp when the product record was last updated
     string updatedAt;
 };
 
-# Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
+# Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint
 @display {label: "Connection Config"}
 public type ConnectionConfig record {|
-    # Provides Auth configurations needed when communicating with a remote HTTP endpoint.
+    # Provides Auth configurations needed when communicating with a remote HTTP endpoint
     http:BearerTokenConfig|OAuth2RefreshTokenGrantConfig|ApiKeysConfig auth;
     # The HTTP version understood by the client
     http:HttpVersion httpVersion = http:HTTP_2_0;
@@ -276,49 +276,49 @@ public type ConnectionConfig record {|
     # Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default
     boolean validation = true;
     # Enables relaxed data binding on the client side. When enabled, `nil` values are treated as optional, 
-    # and absent fields are handled as `nilable` types. Enabled by default.
+    # and absent fields are handled as `nilable` types. Enabled by default
     boolean laxDataBinding = true;
 |};
 
-# Represents a public object identifier containing a unique ID string.
+# Represents a public object identifier containing a unique ID string
 public type PublicObjectId record {
-    # Unique identifier of the public object.
+    # Unique identifier of the public object
     string id;
 };
 
-# Pagination metadata containing cursors for navigating to next and previous pages.
+# Pagination metadata containing cursors for navigating to next and previous pages
 public type Paging record {
-    # Pagination cursor details for retrieving the next page of results.
+    # Pagination cursor details for retrieving the next page of results
     NextPage next?;
-    # Pagination cursor details for navigating to the previous page of results.
+    # Pagination cursor details for navigating to the previous page of results
     PreviousPage prev?;
 };
 
-# Request payload for searching products using filters, sorting, and pagination.
+# Request payload for searching products using filters, sorting, and pagination
 public type PublicObjectSearchRequest record {
-    # Full-text search query string to match against product records.
+    # Full-text search query string to match against product records
     string query?;
-    # Maximum number of results to return per page.
+    # Maximum number of results to return per page
     int:Signed32 'limit?;
-    # Cursor token for retrieving the next page of results.
+    # Cursor token for retrieving the next page of results
     string after?;
-    # List of sort criteria to order search results.
+    # List of sort criteria to order search results
     string[] sorts?;
-    # List of property names to include in the response.
+    # List of property names to include in the response
     string[] properties?;
-    # Groups of filters used to narrow search results.
+    # Groups of filters used to narrow search results
     FilterGroup[] filterGroups?;
 };
 
-# Input object for a batch upsert operation, containing the record identifier and a map of property values to create or update.
+# Input object for a batch upsert operation, containing the record identifier and a map of property values to create or update
 public type SimplePublicObjectBatchInputUpsert record {
     # The name of a property whose values are unique for this object
     string idProperty?;
-    # Trace identifier for tracking the object write operation.
+    # Trace identifier for tracking the object write operation
     string objectWriteTraceId?;
-    # The unique identifier of the record to upsert.
+    # The unique identifier of the record to upsert
     string id;
-    # Map of property names to values to set on the record.
+    # Map of property names to values to set on the record
     record {|string...;|} properties;
 };
 
@@ -328,165 +328,165 @@ public type PostBatchReadReadQueries record {
     boolean archived = false;
 };
 
-# Batch operation response containing processed product records, status, timing metadata, and any errors encountered during processing.
+# Batch operation response containing processed product records, status, timing metadata, and any errors encountered during processing
 public type BatchResponseSimplePublicObjectWithErrors record {
-    # Timestamp indicating when the batch operation completed.
+    # Timestamp indicating when the batch operation completed
     string completedAt;
-    # Total number of errors encountered during the batch operation.
+    # Total number of errors encountered during the batch operation
     int:Signed32 numErrors?;
-    # Timestamp indicating when the batch operation was requested.
+    # Timestamp indicating when the batch operation was requested
     string requestedAt?;
-    # Timestamp indicating when the batch operation started processing.
+    # Timestamp indicating when the batch operation started processing
     string startedAt;
-    # Map of related resource names to their associated URLs.
+    # Map of related resource names to their associated URLs
     record {|string...;|} links?;
-    # List of successfully processed product objects from the batch.
+    # List of successfully processed product objects from the batch
     SimplePublicObject[] results;
-    # List of errors encountered for individual records in the batch.
+    # List of errors encountered for individual records in the batch
     StandardError[] errors?;
-    # Current processing status of the batch operation.
+    # Current processing status of the batch operation
     "PENDING"|"PROCESSING"|"CANCELED"|"COMPLETE" status;
 };
 
-# Input object for creating or updating a product, containing a map of property values and optional association definitions.
+# Input object for creating or updating a product, containing a map of property values and optional association definitions
 public type SimplePublicObjectInput record {
-    # Trace identifier for tracking the object write operation.
+    # Trace identifier for tracking the object write operation
     string objectWriteTraceId?;
-    # Key-value pairs of product property names and their string values.
+    # Key-value pairs of product property names and their string values
     record {|string...;|} properties;
 };
 
-# A paginated collection of product objects including their associated records.
+# A paginated collection of product objects including their associated records
 public type CollectionResponseSimplePublicObjectWithAssociationsForwardPaging record {
-    # Pagination object providing a cursor for retrieving the next page of results.
+    # Pagination object providing a cursor for retrieving the next page of results
     ForwardPaging paging?;
-    # Array of product objects returned in the current page.
+    # Array of product objects returned in the current page
     SimplePublicObjectWithAssociations[] results;
 };
 
-# Defines the category and type identifier for an object association.
+# Defines the category and type identifier for an object association
 public type AssociationSpec record {
-    # The category that defines the origin of the association type.
+    # The category that defines the origin of the association type
     "HUBSPOT_DEFINED"|"USER_DEFINED"|"INTEGRATOR_DEFINED" associationCategory;
-    # The numeric identifier for the specific association type.
+    # The numeric identifier for the specific association type
     int:Signed32 associationTypeId;
 };
 
-# A product object including its properties, timestamps, and related associations.
+# A product object including its properties, timestamps, and related associations
 public type SimplePublicObjectWithAssociations record {
-    # Map of associated object collections keyed by association type.
+    # Map of associated object collections keyed by association type
     record {|CollectionResponseAssociatedId...;|} associations?;
-    # Timestamp indicating when the product record was created.
+    # Timestamp indicating when the product record was created
     string createdAt;
-    # Indicates whether the product record is archived.
+    # Indicates whether the product record is archived
     boolean archived?;
-    # Timestamp indicating when the product record was archived.
+    # Timestamp indicating when the product record was archived
     string archivedAt?;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # The unique identifier of the product record.
+    # The unique identifier of the product record
     string id;
-    # Key-value map of product property names to their current string values.
+    # Key-value map of product property names to their current string values
     record {|string?...;|} properties;
-    # Timestamp indicating when the product record was last updated.
+    # Timestamp indicating when the product record was last updated
     string updatedAt;
 };
 
-# Defines a filter condition using a property, operator, and comparison value.
+# Defines a filter condition using a property, operator, and comparison value
 public type Filter record {
-    # The upper bound value used with the BETWEEN operator.
+    # The upper bound value used with the BETWEEN operator
     string highValue?;
-    # The name of the product property to filter on.
+    # The name of the product property to filter on
     string propertyName;
-    # List of values used with IN or NOT_IN operators.
+    # List of values used with IN or NOT_IN operators
     string[] values?;
-    # The value to compare against the filter property.
+    # The value to compare against the filter property
     string value?;
-    # The comparison operator used to evaluate the filter condition.
+    # The comparison operator used to evaluate the filter condition
     "EQ"|"NEQ"|"LT"|"LTE"|"GT"|"GTE"|"BETWEEN"|"IN"|"NOT_IN"|"HAS_PROPERTY"|"NOT_HAS_PROPERTY"|"CONTAINS_TOKEN"|"NOT_CONTAINS_TOKEN" operator;
 };
 
-# Pagination cursor details for navigating to the previous page of results.
+# Pagination cursor details for navigating to the previous page of results
 public type PreviousPage record {
-    # Cursor token representing the start of the previous page.
+    # Cursor token representing the start of the previous page
     string before;
-    # Direct URL link to the previous page of results.
+    # Direct URL link to the previous page of results
     string link?;
 };
 
-# A batch wrapper containing an array of product creation inputs to process together.
+# A batch wrapper containing an array of product creation inputs to process together
 public type BatchInputSimplePublicObjectInputForCreate record {
-    # Array of product creation input objects to process in batch.
+    # Array of product creation input objects to process in batch
     SimplePublicObjectInputForCreate[] inputs;
 };
 
-# A batch wrapper containing an array of product update inputs to process together.
+# A batch wrapper containing an array of product update inputs to process together
 public type BatchInputSimplePublicObjectBatchInput record {
-    # Array of product update input objects to process in batch.
+    # Array of product update input objects to process in batch
     SimplePublicObjectBatchInput[] inputs;
 };
 
-# Represents a product record returned after an upsert operation, indicating whether it was newly created.
+# Represents a product record returned after an upsert operation, indicating whether it was newly created
 public type SimplePublicUpsertObject record {
-    # Timestamp when the product record was created.
+    # Timestamp when the product record was created
     string createdAt;
-    # Indicates whether the product record is archived.
+    # Indicates whether the product record is archived
     boolean archived?;
-    # Timestamp when the product record was archived.
+    # Timestamp when the product record was archived
     string archivedAt?;
-    # Indicates whether the record was newly created by the upsert.
+    # Indicates whether the record was newly created by the upsert
     boolean 'new;
-    # Map of property names to their historical values with timestamps.
+    # Map of property names to their historical values with timestamps
     record {|ValueWithTimestamp[]...;|} propertiesWithHistory?;
-    # The unique identifier of the product record.
+    # The unique identifier of the product record
     string id;
-    # Map of property names to their current values for the product.
+    # Map of property names to their current values for the product
     record {|string...;|} properties;
-    # Timestamp when the product record was last updated.
+    # Timestamp when the product record was last updated
     string updatedAt;
 };
 
-# Defines a single product update payload, including the target record ID and properties to update.
+# Defines a single product update payload, including the target record ID and properties to update
 public type SimplePublicObjectBatchInput record {
     # The name of a property whose values are unique for this object
     string idProperty?;
-    # Trace identifier for tracking the write operation.
+    # Trace identifier for tracking the write operation
     string objectWriteTraceId?;
     # The id to be updated. This can be the object id, or the unique property value of the idProperty property
     string id;
-    # Key-value pairs of product property names and their string values.
+    # Key-value pairs of product property names and their string values
     record {|string...;|} properties;
 };
 
-# Pagination cursor details for retrieving the next page of results.
+# Pagination cursor details for retrieving the next page of results
 public type NextPage record {
-    # The relative URL link to the next page of results.
+    # The relative URL link to the next page of results
     string link?;
-    # The cursor token used to fetch the next page of results.
+    # The cursor token used to fetch the next page of results
     string after;
 };
 
-# Represents an associated object identified by its ID and association type.
+# Represents an associated object identified by its ID and association type
 public type AssociatedId record {
-    # The unique identifier of the associated object.
+    # The unique identifier of the associated object
     string id;
-    # The type defining the nature of the association.
+    # The type defining the nature of the association
     string 'type;
 };
 
-# Provides API key configurations needed when communicating with a remote HTTP endpoint.
+# Provides API key configurations needed when communicating with a remote HTTP endpoint
 public type ApiKeysConfig record {|
     string privateAppLegacy;
     string privateApp;
 |};
 
-# Input schema for creating a new product, including properties and associations.
+# Input schema for creating a new product, including properties and associations
 public type SimplePublicObjectInputForCreate record {
-    # List of associations linking this product to other CRM objects.
+    # List of associations linking this product to other CRM objects
     PublicAssociationsForObject[] associations?;
-    # Optional trace identifier for tracking the write operation.
+    # Optional trace identifier for tracking the write operation
     string objectWriteTraceId?;
-    # Key-value pairs of product property names and their string values.
+    # Key-value pairs of product property names and their string values
     record {|string...;|} properties?;
 };
 
